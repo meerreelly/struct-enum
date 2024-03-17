@@ -150,76 +150,76 @@ Console.OutputEncoding = Encoding.UTF8;
 //Задача 7.2-7.3
 
 
-//Authors[] authors = [new Authors("Taras", "Shevchenko", DateTime.Parse("02/05/1956")),new Authors("Lina", "Kostenko", DateTime.Parse("12/10/1942")),new Authors("Ivan", "Franko", DateTime.Parse("23/08/1966"))];
-//Books[] books = [new Books("1", authors[1], 2000, "City"),new Books("2", authors[2], 1980, "City"),new Books("3", authors[0], 2020, "City"),new Books("4", authors[1], 2013, "City"),new Books("5", authors[0], 1999, "City")];
+//Authors[] authors = [new Authors("Taras", "Shevchenko", DateTime.Parse("02/05/1956")), new Authors("Lina", "Kostenko", DateTime.Parse("12/10/1942")), new Authors("Ivan", "Franko", DateTime.Parse("23/08/1966"))];
+//Books[] books = [new Books("1", authors[1], 2000, "City"), new Books("2", authors[2], 1980, "City"), new Books("3", authors[0], 2020, "City"), new Books("4", authors[1], 2013, "City"), new Books("5", authors[0], 1999, "City")];
 //while (true)
 //{
-//    Console.WriteLine("Select action:\n[1]-Show list of book\n[2]-Add new book\n[3]-Remove book\n[4]-Edit book\n[5]-Exit");
-//    int temp = int.Parse(Console.ReadLine());
-//    switch (temp)
-//    {
-//        case 1:
-//            Console.WriteLine("Show full information?\n[y]-yes\n[n]-no\n");
-//            char tempchar = ' ';
-//            tempchar =char.Parse(Console.ReadLine());
-//            bool showFullInformation = false;
-//            switch (tempchar)
-//            {
-//                case 'y':
-//                    showFullInformation = true;
-//                    break;
-//                case 'n':
-//                    showFullInformation = false;
-//                    break;
-//                default:break;
-//            }
-//            Console.WriteLine("List of books:\n");
-//            foreach (Books book in books)
-//            {
-//                book.Print(showFullInformation);
-//            }
-//            break;
-//        case 2:
-//            Books booktemp = new Books();
-//            booktemp = booktemp.CreateNewProduct(authors);
-//            books = booktemp.AddProduct(books);
-//            break;
-//        case 3:
-//            Console.WriteLine("Enter title of book wich you want remove:");
-//            string tempname = Console.ReadLine();
-//            for (int i = 0; i < books.Length; i++)
-//            {
-//                if (books[i].title == tempname)
-//                {
-//                    books = books[i].DelProduct(books);
-//                }
-//            }
-//            break;
-//        case 4:
-//            Console.WriteLine("Enter name of book wich you want edit:");
-//            tempname = Console.ReadLine();
-//            for (int i = 0; i < books.Length; i++)
-//            {
-//                if (books[i].title == tempname)
-//                {
-//                    books[i].EditBook(authors);
-//                }
-//            }
-//            break;
-//        case 5:
-//            return;
-//        default:
-//            break;
-//    }
+//Console.WriteLine("Select action:\n[1]-Show list of book\n[2]-Add new book\n[3]-Remove book\n[4]-Edit book\n[5]-Exit");
+//int temp = int.Parse(Console.ReadLine());
+//switch (temp)
+//{
+//case 1:
+//Console.WriteLine("Show full information?\n[y]-yes\n[n]-no\n");
+//char tempchar = ' ';
+//tempchar = char.Parse(Console.ReadLine());
+//bool showFullInformation = false;
+//switch (tempchar)
+//{
+//case 'y':
+//showFullInformation = true;
+//break;
+//case 'n':
+//showFullInformation = false;
+//break;
+//default: break;
+//}
+//Console.WriteLine("List of books:\n");
+//foreach (Books book in books)
+//{
+//book.Print(showFullInformation);
+//}
+//break;
+//case 2:
+//Books booktemp = new Books();
+//booktemp = booktemp.CreateNewBook(authors);
+//books = booktemp.AddBook(books);
+//break;
+//case 3:
+//Console.WriteLine("Enter title of book wich you want remove:");
+//string tempname = Console.ReadLine();
+//for (int i = 0; i < books.Length; i++)
+//{
+//if (books[i].title == tempname)
+//{
+//books = books[i].DelBook(books);
+//}
+//}
+//break;
+//case 4:
+//Console.WriteLine("Enter name of book wich you want edit:");
+//tempname = Console.ReadLine();
+//for (int i = 0; i < books.Length; i++)
+//{
+//if (books[i].title == tempname)
+//{
+//books[i].EditBook(authors);
+//}
+//}
+//break;
+//case 5:
+//return;
+//default:
+//break;
+//}
 //}
 //struct Authors(string _name, string _last_name, DateTime _birthday)
 //{
 //    public string name = _name;
 //    public string last_name = _last_name;
 //    public DateTime birthday = _birthday;
-//     public void Print()
-//    {       
-//     Console.WriteLine($"Author:{name} {last_name}\nDate of birth of the author:{birthday.ToShortDateString()}\n");  
+//    public void Print()
+//    {
+//        Console.WriteLine($"Author:{name} {last_name}\nDate of birth of the author:{birthday.ToShortDateString()}\n");
 //    }
 //}
 //struct Books(string _title, Authors _author, int _year, string _place)
@@ -238,7 +238,7 @@ Console.OutputEncoding = Encoding.UTF8;
 //    }
 
 
-//    public Books[] AddProduct(Books[] books)
+//    public Books[] AddBook(Books[] books)
 //    {
 //        Books newbook = new Books(title, author, year, place);
 //        Books[] newlist = new Books[books.Length + 1];
@@ -250,7 +250,7 @@ Console.OutputEncoding = Encoding.UTF8;
 //        books = newlist;
 //        return books;
 //    }
-//    public Books[] DelProduct(Books[] books)
+//    public Books[] DelBook(Books[] books)
 //    {
 //        int temp = 0;
 //        Books[] arraynew = new Books[books.Length - 1];
@@ -268,26 +268,26 @@ Console.OutputEncoding = Encoding.UTF8;
 
 //        return arraynew;
 //    }
-//    public Books CreateNewProduct(Authors[] authors)
+//    public Books CreateNewBook(Authors[] authors)
 //    {
 //        Console.WriteLine("Enter book title:");
 //        string title = Console.ReadLine();
 //        Console.WriteLine($"Enter author name:\nAvailable author:");
-//        foreach(Authors author in authors)
+//        foreach (Authors author in authors)
 //        {
 //            author.Print();
 //        }
 //        string authorname = Console.ReadLine();
 //        Authors authortemp = new Authors();
-//        foreach(Authors author in authors)
+//        foreach (Authors author in authors)
 //        {
-//            if(author.name == authorname)
+//            if (author.name == authorname)
 //            {
 //                authortemp = author;
 //            }
 //        }
 //        Console.WriteLine("Enter year:");
-//        int year  = int.Parse(Console.ReadLine());
+//        int year = int.Parse(Console.ReadLine());
 //        Console.WriteLine("Enter place:");
 //        string place = Console.ReadLine();
 //        Books booktemp = new Books(title, authortemp, year, place);
@@ -304,15 +304,15 @@ Console.OutputEncoding = Encoding.UTF8;
 //                title = Console.ReadLine();
 //                break;
 //            case 2:
-//                 Console.WriteLine($"Enter author name:\nAvailable author:");
-//                foreach(Authors author in authors)
+//                Console.WriteLine($"Enter author name:\nAvailable author:");
+//                foreach (Authors author in authors)
 //                {
 //                    author.Print();
 //                }
 //                string authorname = Console.ReadLine();
-//                foreach(Authors authortemp in authors)
+//                foreach (Authors authortemp in authors)
 //                {
-//                    if(author.name == authorname)
+//                    if (author.name == authorname)
 //                    {
 //                        author = authortemp;
 //                    }

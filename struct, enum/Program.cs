@@ -331,3 +331,132 @@ Console.OutputEncoding = Encoding.UTF8;
 //        }
 //    }
 //}
+
+
+Goods[] goods = [new Goods(21312,"Shirt",(Brands)1,1232,10),
+    new Goods(21231,"jacket",(Brands)2,11232,1),
+    new Goods(6543,"Shoes",(Brands)3,12432,20),
+    new Goods(123243,"qwerew",(Brands)1,12732,5),
+    new Goods(877865,"dfsklfdm",(Brands)2,12312,0),
+    new Goods(54434,"Shirt",(Brands)5,12732,5),
+    new Goods(87658,"vngbf",(Brands)4,12132,90),
+    new Goods(123241,"Shirt",(Brands)1,12392,100)];
+Brands[] brands = (Brands[])Enum.GetValues(typeof(Brands));  
+while (true)
+{
+    Console.WriteLine("Select action:\n[1]-Show list of goods\n[2]-Sell Goods\n[3]-Show goods by brand\n[4]-Add goods\n[5]-Exit");
+    int temp = int.Parse(Console.ReadLine());
+    switch (temp)
+    {
+        case 1:
+            foreach (Goods good in goods)
+            {
+                good.PrintGoods();
+            }
+            break;
+        case 2: 
+            Console.WriteLine("Enter article of goods:");
+            int articletemp = int.Parse(Console.ReadLine());    
+            for(int i=0;i<goods.Length;i++)
+            {
+                if (goods[i].article == articletemp)
+                {
+                    goods[i].SellGoods();
+                }
+            }
+            break;
+        case 3:
+            foreach (Brands brand in brands)
+            {
+                Console.WriteLine(brand+":");
+                foreach(Goods good in goods)
+                {
+                    if(good.brand == brand)
+                    {
+                        good.PrintGoods();
+                    }
+                }
+                Console.WriteLine("------------------");
+
+            }
+            break;
+        case 4:
+            Goods newgood = new Goods();
+            newgood.CreateNewGoods();
+            goods = newgood.AddNewGoods(goods);
+            break;
+        case 5:
+            return;
+        default:
+            break;
+    }
+}
+
+enum Brands
+{
+    Adidas=1,
+    Nike,
+    Puma,
+    Crop,
+    Convers
+}
+
+struct Goods(int article,  string name, Brands brand, float price, int amount)
+{
+    public int article = article;
+    string name =name;
+   public Brands brand = brand;
+    float price = price;
+    int amount = amount;
+    public void PrintGoods()
+    {
+        Console.WriteLine($"Goods article:{article}\nGoods name:{name}\nGoods brand:{brand}\nGoods price:{price}\nGoods count:{amount}\n");
+    }
+    public void SellGoods() 
+    {
+        if (amount > 0)
+        {
+            amount--;
+            Console.WriteLine("Product has been successfully sold");
+
+        }
+        else
+        {
+            Console.WriteLine("Product is not available");
+        }
+    }
+    public Goods[] AddNewGoods(Goods[] goods)
+    {
+
+        Goods newgoods = new Goods();
+        Goods[] newlist = new Goods[goods.Length + 1];
+        for (int i = 0; i < goods.Length; i++)
+        {
+            newlist[i] = goods[i];
+        }
+        newlist[newlist.Length - 1] = newgoods;
+        goods = newlist;
+        return goods;
+    }
+    public Goods CreateNewGoods()
+    {
+        Console.WriteLine("Enter goods article:");
+        int article = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter goods name:");
+        string name = Console.ReadLine();
+        Console.WriteLine("Enter goods brand:\nAvailable brands:\n[1]-Adidas,\n[2]-Nike,\n[3]-Puma,\n[4]-Crop,\n[5]-Convers");
+        int brandtemp;
+        do
+        {
+            brandtemp = int.Parse(Console.ReadLine());
+
+        }while(brandtemp<1&&brandtemp>5);
+        Console.WriteLine("Enter price:");
+        float price = float.Parse(Console.ReadLine());
+        Console.WriteLine("Enter amount:");
+        int amount = int.Parse(Console.ReadLine());
+        Goods goods = new Goods(article, name, (Brands)brandtemp, price,amount);
+        return goods;
+    }
+
+}
